@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "patrials/head.html" %}
+
+<body>
+    {% include "patrials/navbar.html" %}
+
+    <main>
+        <h1>Welcome to dBlog</h1>
+        <section>
+            <h2>Latest Posts</h2>
+            <hr />
+            <section>
+                {% for article in blog.all %}
+                <article>
+                    <a href="{% url 'article' article.id %}">
+                        {{article.title}}
+                    </a>
+                    <p>{{article.pub_date_pretty}}</p>
+                    <img src="{{ article.image.url }}" width="250" alt="article image">
+                    <p>{{article.summary}}</p>
+                </article>
+                {% endfor %}
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>
